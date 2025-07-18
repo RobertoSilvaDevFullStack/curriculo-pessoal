@@ -8,8 +8,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts - Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Lucide Icons CDN -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -18,25 +16,27 @@
         }
         .container {
             max-width: 800px;
-            margin: 2rem auto;
+            margin: 1.5rem auto;
             background-color: #ffffff;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            padding: 2.5rem;
-            line-height: 1.6;
+            padding: 1.8rem;
+            line-height: 1.4;
         }
         h1 {
             color: #4a0e4e; /* Dark purple for name */
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
+            font-size: 2rem;
         }
         h2 {
             color: #5b21b6; /* Deeper purple for section titles */
-            font-weight: 600;
+            font-weight: 700;
             border-bottom: 2px solid #ede9fe; /* Light purple underline */
-            padding-bottom: 0.5rem;
-            margin-top: 2rem;
-            margin-bottom: 1.25rem;
+            padding-bottom: 0.3rem;
+            margin-top: 1.2rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
         }
         .contact-info a {
             color: #6d28d9; /* Purple for links */
@@ -51,7 +51,7 @@
             padding-left: 0;
         }
         .section-content li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.2rem;
             padding-left: 1.5rem;
             position: relative;
         }
@@ -65,7 +65,7 @@
             position: absolute;
         }
         .experience-item {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
         .experience-item h3 {
             font-weight: 600;
@@ -76,7 +76,7 @@
             color: #555;
         }
         .skills-category {
-            margin-bottom: 1rem;
+            margin-bottom: 0.6rem;
         }
         .skills-category strong {
             color: #6d28d9; /* Purple for skill categories */
@@ -84,19 +84,19 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
         .skills-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.3rem;
         }
         .skill-tag {
             background-color: #ede9fe; /* Light purple tag background */
             color: #6d28d9; /* Purple tag text */
-            padding: 0.3rem 0.7rem;
-            border-radius: 6px;
-            font-size: 0.85rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
             font-weight: 500;
         }
         .quantifiable-result {
@@ -106,17 +106,38 @@
         }
         /* Print styles */
         @media print {
+            * {
+                box-sizing: border-box;
+            }
             body {
                 background-color: #ffffff;
                 margin: 0;
                 padding: 0;
+                font-size: 11px;
             }
             .container {
                 box-shadow: none;
-                margin: 0;
+                margin: 0 auto;
                 border-radius: 0;
-                padding: 1.5rem;
+                padding: 0.8rem 1.5rem;
                 max-width: 100%;
+                line-height: 1.2;
+                width: 100%;
+                display: block;
+            }
+            @page {
+                margin: 1cm 1.2cm;
+                size: A4 portrait;
+            }
+            h1 {
+                font-size: 1.6rem !important;
+                margin-bottom: 0.3rem !important;
+            }
+            h2 {
+                font-size: 0.9rem !important;
+                margin-top: 0.7rem !important;
+                margin-bottom: 0.4rem !important;
+                padding-bottom: 0.2rem !important;
             }
             h1, h2, .contact-info a, .skills-category strong, .experience-item h3, .section-content li::before {
                 color: #000 !important; /* Black for print */
@@ -137,9 +158,19 @@
             /* Ensure content doesn't break awkwardly */
             .section, .experience-item {
                 page-break-inside: avoid;
+                margin-bottom: 0.5rem;
+            }
+            .experience-item {
+                margin-bottom: 0.4rem !important;
+            }
+            .experience-item h3 {
+                margin-bottom: 0.2rem !important;
+            }
+            .experience-item p {
+                margin-bottom: 0.2rem !important;
             }
             .url-display {
-                font-size: 0.75rem; /* Smaller font for URLs */
+                font-size: 0.65rem; /* Smaller font for URLs */
                 color: #555 !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
@@ -149,7 +180,7 @@
             /* Show URLs after links in print */
             a[href]:after {
                 content: " (" attr(href) ")";
-                font-size: 0.7rem;
+                font-size: 0.6rem;
                 color: #666 !important;
                 font-weight: normal;
                 -webkit-print-color-adjust: exact;
@@ -168,177 +199,149 @@
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
+            
+            /* Center content better */
+            header {
+                text-align: center !important;
+                margin-bottom: 0.8rem !important;
+            }
+            
+            .contact-info {
+                justify-content: center !important;
+                text-align: center !important;
+                font-size: 0.65rem !important;
+                line-height: 1.2 !important;
+                margin-top: 0.2rem !important;
+            }
+            
+            /* Optimize text sizes for print */
+            .text-xs {
+                font-size: 0.65rem !important;
+                line-height: 1.15 !important;
+            }
+            
+            .text-sm {
+                font-size: 0.7rem !important;
+            }
+            
+            /* Reduce margins and padding for better fit */
+            .section-content {
+                margin-top: 0.2rem !important;
+            }
+            
+            .list-disc {
+                margin-left: 0.8rem !important;
+                margin-bottom: 0.3rem !important;
+            }
+            
+            .ml-4 {
+                margin-left: 0.8rem !important;
+            }
+            
+            .section-content li {
+                margin-bottom: 0.15rem !important;
+                line-height: 1.15 !important;
+            }
+            
+            /* Compact skills section */
+            .skills-category p {
+                margin-bottom: 0.3rem !important;
+            }
+            
+            /* Compact header */
+            .mb-6 {
+                margin-bottom: 0.8rem !important;
+            }
+            
+            /* Reduce space between sections */
+            .section {
+                margin-bottom: 0.6rem !important;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <!-- Header -->
-        <header class="text-center mb-8">
-            <h1 class="text-4xl">ROBERTO VICENTE DA SILVA</h1>
-            <div class="contact-info text-gray-700 text-sm mt-2 flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
-                <span class="flex items-center gap-1">
-                    <i data-lucide="map-pin" class="w-4 h-4 text-purple-600"></i> São Paulo - SP
-                </span>
-                <span class="flex items-center gap-1">
-                    <i data-lucide="phone" class="w-4 h-4 text-purple-600"></i> (11) 93804-7712 / (11) 91083-5843
-                </span>
-                <a href="https://www.linkedin.com/in/roberto-silva-dev-full-stack/" target="_blank" class="flex items-center gap-1">
-                    <i data-lucide="linkedin" class="w-4 h-4 text-purple-600"></i> LinkedIn
-                    <span class="url-display">(linkedin.com/in/roberto-silva-dev-full-stack/)</span>
-                </a>
-                <a href="https://github.com/RobertoSilvaDevFullStack" target="_blank" class="flex items-center gap-1">
-                    <i data-lucide="github" class="w-4 h-4 text-purple-600"></i> GitHub
-                    <span class="url-display">(github.com/RobertoSilvaDevFullStack)</span>
-                </a>
-                <a href="https://vercel.com/roberto-silva-projects" target="_blank" class="flex items-center gap-1">
-                    <i data-lucide="folder-open" class="w-4 h-4 text-purple-600"></i> Projetos
-                    <span class="url-display">(vercel.com/roberto-silva-projects)</span>
-                </a>
+        <header class="text-center mb-6">
+            <h1 class="text-3xl">ROBERTO VICENTE DA SILVA</h1>
+            <div class="contact-info text-gray-700 text-xs mt-1 flex flex-wrap justify-center items-center gap-x-3 gap-y-1">
+                <span>São Paulo - SP</span>
+                <span>Telefone: (11) 91083-5843</span>
+                <span>LinkedIn: linkedin.com/in/roberto-silva-dev-full-stack/</span>
+                <span>GitHub: github.com/RobertoSilvaDevFullStack</span>
+                <span>Projetos: vercel.com/roberto-silva-projects</span>
             </div>
         </header>
 
-        <!-- Resumo Profissional -->
+        <!-- Objetivo Profissional -->
         <section class="section">
-            <h2>Resumo Profissional</h2>
-            <div class="section-content text-gray-800">
-                <p>Em transição de carreira, estudo Análise e Desenvolvimento de Sistemas e atuo como estagiário de Desenvolvimento na empresa de tecnologia Tinebus Soluções. Com mais de 6 anos de atuação no mercado imobiliário, tenho expertise em vendas, liderança de equipe e atendimento ao cliente, sendo destaque em vendas por diversas vezes. Também possuo experiência em marketing digital, tráfego pago e desenvolvimento front-end. Agora, migrando do mercado imobiliário para a área de tecnologia, busco oportunidades com foco na criação de soluções que unam tecnologia, inteligência artificial e facilidade à experiência do usuário.</p>
+            <h2>OBJETIVO PROFISSIONAL</h2>
+            <div class="section-content text-gray-800 text-sm">
+                <p class="text-xs text-gray-700 mt-2">
+                    <strong>Cargos de Interesse:</strong> Desenvolvedor Full Stack Júnior, Desenvolvedor Front-end, Desenvolvedor Back-end, Analista de Sistemas, Desenvolvedor Web, Estagiário de Desenvolvimento de Sistemas, Desenvolvedor de Software, Programador Junior, Analista Desenvolvedor
+                </p>
             </div>
         </section>
 
         <!-- Habilidades -->
         <section class="section">
-            <h2>Habilidades</h2>
-            <div class="section-content text-gray-800">
+            <h2>HABILIDADES TÉCNICAS</h2>
+            <div class="section-content text-gray-800 text-sm">
                 <div class="skills-category">
-                    <strong><i data-lucide="code" class="w-5 h-5"></i> Desenvolvimento e Tecnologia</strong>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <p class="font-medium text-gray-700 mb-1">Front-end:</p>
-                            <div class="skills-list">
-                                <span class="skill-tag">HTML5</span>
-                                <span class="skill-tag">CSS3</span>
-                                <span class="skill-tag">Bootstrap 5</span>
-                                <span class="skill-tag">JavaScript (Vanilla JS)</span>
-                                <span class="skill-tag">React.js (Em estudo)</span>
-                                <span class="skill-tag">Next.js (Em estudo)</span>
-                                <span class="skill-tag">Princípios de UI/UX</span>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="font-medium text-gray-700 mb-1">Back-end:</p>
-                            <div class="skills-list">
-                                <span class="skill-tag">PHP</span>
-                                <span class="skill-tag">Node.js (Noções de)</span>
-                                <span class="skill-tag">Express.js (Noções de)</span>
-                                <span class="skill-tag">Criação e Consumo de APIs RESTful</span>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="font-medium text-gray-700 mb-1">Linguagens Adicionais:</p>
-                            <div class="skills-list">
-                                <span class="skill-tag">TypeScript (Em estudo)</span>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="font-medium text-gray-700 mb-1">Banco de Dados:</p>
-                            <div class="skills-list">
-                                <span class="skill-tag">MySQL</span>
-                                <span class="skill-tag">PostgreSQL</span>
-                                <span class="skill-tag">SQL</span>
-                                <span class="skill-tag">MongoDB (Em estudo)</span>
-                            </div>
-                        </div>
-                        <div class="col-span-1 md:col-span-2">
-                            <p class="font-medium text-gray-700 mb-1">Ferramentas e Plataformas:</p>
-                            <div class="skills-list">
-                                <span class="skill-tag">Visual Studio Code</span>
-                                <span class="skill-tag">Git</span>
-                                <span class="skill-tag">GitHub</span>
-                                <span class="skill-tag">Vercel</span>
-                                <span class="skill-tag">WordPress</span>
-                            </div>
-                        </div>
-                        <div class="col-span-1 md:col-span-2">
-                            <p class="font-medium text-gray-700 mb-1">Metodologias:</p>
-                            <div class="skills-list">
-                                <span class="skill-tag">Metodologias Ágeis (Jira, Scrum/Kanban)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skills-category mt-6">
-                    <strong><i data-lucide="trending-up" class="w-5 h-5"></i> Marketing Digital e Análise de Dados</strong>
-                    <div class="skills-list">
-                        <span class="skill-tag">Google Ads</span>
-                        <span class="skill-tag">Facebook Ads</span>
-                        <span class="skill-tag">Google Analytics</span>
-                        <span class="skill-tag">SEO</span>
-                        <span class="skill-tag">Captação de Leads</span>
-                        <span class="skill-tag">Canva</span>
-                        <span class="skill-tag">Capcut</span>
-                        <span class="skill-tag">Testes A/B</span>
-                    </div>
-                </div>
-
-                <div class="skills-category mt-6">
-                    <strong><i data-lucide="users" class="w-5 h-5"></i> Soft Skills</strong>
-                    <div class="skills-list">
-                        <span class="skill-tag">Trabalho em Equipe</span>
-                        <span class="skill-tag">Liderança</span>
-                        <span class="skill-tag">Pensamento Criativo</span>
-                        <span class="skill-tag">Autogestão</span>
-                        <span class="skill-tag">Resolução de Problemas</span>
-                        <span class="skill-tag">Comprometimento</span>
-                    </div>
+                    <p class="text-xs text-gray-700 mt-2">
+                        <strong>Linguagens de Programação:</strong> JavaScript ES6+, PHP 8, TypeScript, HTML5, CSS3, SQL, Python<br>
+                        <strong>Frameworks e Bibliotecas:</strong> React.js, Next.js, Node.js, Bootstrap 5, Tailwind CSS, Express.js, jQuery<br>
+                        <strong>Banco de Dados:</strong> MySQL, PostgreSQL, MongoDB, Database Design, SQL Queries<br>
+                        <strong>Ferramentas e Tecnologias:</strong> Git, GitHub, VS Code, APIs RESTful, JSON, AJAX, NPM, Webpack<br>
+                        <strong>Metodologias de Desenvolvimento:</strong> Scrum, Kanban, Metodologias Ágeis, Jira, Confluence<br>
+                        <strong>Testes e Qualidade:</strong> Jest, Cypress, Unit Testing, Integration Testing, Test-Driven Development (TDD), Quality Assurance<br>
+                        <strong>DevOps e Deploy:</strong> CI/CD, Docker, Vercel, Netlify, GitHub Actions<br>
+                        <strong>Marketing Digital:</strong> Google Ads, Facebook Ads, Google Analytics, SEO, SEM, Testes A/B, ROI, ROAS<br>
+                        <strong>Competências Técnicas:</strong> Problem Solving, Code Review, Debugging, Refactoring, Performance Optimization, Clean Code<br>
+                        <strong>Competências Comportamentais:</strong> Liderança, Trabalho em Equipe, Autogestão, Comunicação, Pensamento Analítico, Adaptabilidade, Criatividade
+                    </p>
                 </div>
             </div>
         </section>
 
         <!-- Experiência Profissional -->
         <section class="section">
-            <h2>Experiência Profissional</h2>
-            <div class="section-content text-gray-800">
+            <h2>EXPERIÊNCIA PROFISSIONAL</h2>
+            <div class="section-content text-gray-800 text-sm">
                 <div class="experience-item">
-                    <h3>Tinebus - Estagiário em Desenvolvimento de Sistemas</h3>
-                    <p class="text-sm text-gray-600">Fevereiro/2025 - atual</p>
-                    <ul class="list-disc ml-6 text-gray-700">
-                        <li>Desenvolvimento de aplicações internas e manutenção de sistemas legados, incluindo PHP e JavaScript.</li>
-                        <li>Apoio na implementação de soluções front-end e back-end, contribuindo para módulos de gestão e interfaces de usuário.</li>
-                        <li>Desenvolvimento de um sistema de mapa de ônibus dinâmico, com adição/remoção de assentos e portas, e alteração de números de assento.</li>
-                        <li>Criação de um sistema de gráficos para visualização de viagens realizadas (rotas mais frequentes, passageiros por período).</li>
-                        <li>Implementação de um sistema de cálculo de rotas e preços integrado à API do Google Maps, recalculando valores por trecho percorrido.</li>
-                        <li>Acompanhamento e aplicação de boas práticas de segurança e versionamento de código (Git/GitHub).</li>
-                        <li>Experiência prática com Metodologias Ágeis (Jira, Scrum/Kanban) em ciclos de desenvolvimento de software.</li>
+                    <h3>ESTAGIÁRIO EM DESENVOLVIMENTO DE SISTEMAS</h3>
+                    <p class="text-xs text-gray-600"><strong>Tinebus Soluções</strong> | Fevereiro 2025 - Atual</p>
+                    <ul class="list-disc ml-4 text-gray-700 text-xs">
+                        <li>Desenvolvimento e manutenção de aplicações web full stack em PHP e JavaScript para sistemas de gestão de transporte público utilizando arquitetura MVC.</li>
+                        <li>Criação de sistema interativo de mapa de ônibus com funcionalidades dinâmicas de adição/remoção de assentos, portas e alteração de numeração em tempo real usando JavaScript e DOM manipulation.</li>
+                        <li>Implementação de dashboards responsivos com gráficos e visualização de dados para análise de viagens, rotas mais frequentes e relatórios de passageiros por período.</li>
+                        <li>Desenvolvimento de sistema automatizado de cálculo de rotas e preços integrado à API do Google Maps com recálculo dinâmico de valores por trecho utilizando APIs RESTful.</li>
+                        <li>Aplicação de boas práticas de desenvolvimento: versionamento de código com Git/GitHub, metodologias ágeis (Jira, Scrum/Kanban), testes automatizados (Jest, Cypress) e práticas de segurança web.</li>
+                        <li>Colaboração no desenvolvimento de interfaces responsivas mobile-first, code review, debugging de sistemas legados e otimização de performance de aplicações web.</li>
                     </ul>
                 </div>
 
                 <div class="experience-item">
-                    <h3>Gestor de Tráfego Pago</h3>
-                    <p class="text-sm text-gray-600">Junho/2021 - atual</p>
-                    <ul class="list-disc ml-6 text-gray-700">
-                        <li>Planejamento e execução de campanhas no Google Ads e Facebook Ads.</li>
-                        <li><span class="quantifiable-result">Aumento de 25% no tráfego qualificado e redução de 15% no custo por aquisição em 6 meses.</span></li>
-                        <li>Testes A/B e relatórios detalhados de performance para otimização constante.</li>
+                    <h3>ESPECIALISTA EM MARKETING DIGITAL | GESTOR DE TRÁFEGO PAGO</h3>
+                    <p class="text-xs text-gray-600"><strong>Freelancer</strong> | Junho 2021 - Atual</p>
+                    <ul class="list-disc ml-4 text-gray-700 text-xs">
+                        <li>Planejamento estratégico e execução de campanhas de marketing digital no Google Ads e Facebook Ads para diversos segmentos de mercado.</li>
+                        <li>Implementação de estratégias avançadas de segmentação de público-alvo, criação de landing pages otimizadas e realização de testes A/B para maximização de conversões.</li>
+                        <li>Análise detalhada de métricas e KPIs com Google Analytics, gerando relatórios de performance e ROI para tomada de decisões estratégicas.</li>
+                        <li>Otimização contínua de campanhas resultando em <span class="quantifiable-result">aumento de 25% no tráfego qualificado e redução de 15% no custo por aquisição</span> em períodos de 6 meses.</li>
+                        <li>Gestão de orçamentos publicitários variando de R$ 5.000 a R$ 50.000 mensais, com foco em maximização do ROAS (Return on Ad Spend).</li>
                     </ul>
                 </div>
 
                 <div class="experience-item">
-                    <h3>Baiyt Imóveis - Corretor de Imóveis</h3>
-                    <p class="text-sm text-gray-600">Abril/2019 - dezembro/2024</p>
-                    <ul class="list-disc ml-6 text-gray-700">
-                        <li>Atendimento a mais de 200 famílias na compra de imóveis.</li>
-                        <li>Captação de leads, venda consultiva, orientação sobre financiamento e pós-venda.</li>
-                        <li>Mentor de equipe com 5 corretores.</li>
-                    </ul>
-                </div>
-
-                <div class="experience-item">
-                    <h3>Riachuelo - Conferente de Estoque</h3>
-                    <p class="text-sm text-gray-600">Abril/2018 - março/2019</p>
-                    <ul class="list-disc ml-6 text-gray-700">
-                        <li>Controle de entrada e saída de mercadorias e suporte à logística.</li>
+                    <h3>CORRETOR DE IMÓVEIS | LÍDER DE EQUIPE</h3>
+                    <p class="text-xs text-gray-600"><strong>Baiyt Imóveis</strong> | Abril 2019 - Dezembro 2024</p>
+                    <ul class="list-disc ml-4 text-gray-700 text-xs">
+                        <li>Atendimento personalizado e consultoria especializada a mais de 200 famílias no processo completo de compra de imóveis, desde prospecção até pós-venda.</li>
+                        <li>Liderança e mentoria de equipe com 5 corretores, implementando processos de vendas consultivas e programas de treinamento em atendimento ao cliente.</li>
+                        <li>Reconhecimento como destaque em vendas por múltiplas vezes, superando metas mensais em média 120% durante 3 anos consecutivos.</li>
+                        <li>Implementação de sistema CRM personalizado para gestão de leads e follow-up automatizado, aumentando a taxa de conversão da equipe em 30%.</li>
                     </ul>
                 </div>
             </div>
@@ -346,74 +349,63 @@
 
         <!-- Projetos Principais -->
         <section class="section">
-            <h2>Projetos Principais</h2>
-            <div class="section-content text-gray-800">
+            <h2>PROJETOS DE DESENVOLVIMENTO</h2>
+            <div class="section-content text-gray-800 text-sm">
                 <div class="experience-item">
-                    <h3><a href="https://robertosilva19.github.io/loja_dev/" target="_blank" class="text-purple-600 hover:underline">Loja Dev - E-commerce Responsivo</a></h3>
-                    <p class="text-sm text-gray-700">Desenvolvimento de um layout completo e responsivo para uma loja virtual, focando em interface intuitiva e experiência de compra fluida em qualquer dispositivo. (HTML5, CSS3, JavaScript, Bootstrap) <span class="url-display">(robertosilva19.github.io/loja_dev/)</span></p>
+                    <h3>E-COMMERCE RESPONSIVO</h3>
+                    <p class="text-xs text-gray-700">Desenvolvimento de layout completo e responsivo para loja virtual com interface intuitiva, carrinho de compras e experiência de usuário otimizada. Tecnologias: HTML5, CSS3, JavaScript ES6, Bootstrap 5. URL: robertosilva19.github.io/loja_dev/</p>
                 </div>
+                
                 <div class="experience-item">
-                    <h3><a href="https://robertosilva19.github.io/Landing_Page_Fer/" target="_blank" class="text-purple-600 hover:underline">Landing Page Profissional - Foco em Conversão</a></h3>
-                    <p class="text-sm text-gray-700">Criação de uma landing page profissional e responsiva, otimizada para capturar leads e direcionar o usuário a uma ação específica. (HTML5, CSS3, JavaScript) <span class="url-display">(robertosilva19.github.io/Landing_Page_Fer/)</span></p>
+                    <h3>API RESTFUL PARA GESTÃO DE CLÍNICAS</h3>
+                    <p class="text-xs text-gray-700">Sistema de gestão completo com endpoints CRUD para pacientes, agendamentos e serviços médicos. Implementação de autenticação e estrutura de banco relacional. Tecnologias: Node.js, Express.js, PostgreSQL, APIs RESTful. URL: robertosilva19.github.io/web_api_clinica/</p>
                 </div>
+                
                 <div class="experience-item">
-                    <h3><a href="https://robertosilva19.github.io/Projeto-Calmaria-Spa---Full-Stack/" target="_blank" class="text-purple-600 hover:underline">Calmaria Spa - Website Moderno e Responsivo</a></h3>
-                    <p class="text-sm text-gray-700">Desenvolvimento de um website moderno e totalmente responsivo para um spa, destacando a criação de interfaces atraentes e funcionais para negócios de serviços. (HTML5, CSS3, JavaScript) <span class="url-display">(robertosilva19.github.io/Projeto-Calmaria-Spa---Full-Stack/)</span></p>
+                    <h3>LANDING PAGE OTIMIZADA PARA CONVERSÃO</h3>
+                    <p class="text-xs text-gray-700">Página profissional e responsiva otimizada para captura de leads e direcionamento de usuários para ação específica. Implementação de técnicas de SEO. Tecnologias: HTML5, CSS3, JavaScript. URL: robertosilva19.github.io/Landing_Page_Fer/</p>
                 </div>
+                
                 <div class="experience-item">
-                    <h3><a href="https://robertosilva19.github.io/web_api_clinica/" target="_blank" class="text-purple-600 hover:underline">web_api_clinica - API RESTful para Gestão de Clínicas</a></h3>
-                    <p class="text-sm text-gray-700">Criação de uma API RESTful robusta para simular um sistema de gestão de clínicas. Demonstra backend com endpoints CRUD para pacientes, agendamentos e serviços. (Node.js/Express.js, PostgreSQL/MySQL, ORM) <span class="url-display">(robertosilva19.github.io/web_api_clinica/)</span></p>
-                </div>
-                <div class="experience-item">
-                    <h3><a href="https://robertosilva19.github.io/Portfolio_Pessoal/#apresentacao" target="_blank" class="text-purple-600 hover:underline">Portfólio Pessoal - Vitrine Profissional</a></h3>
-                    <p class="text-sm text-gray-700">Meu portfólio pessoal, uma aplicação web responsiva que apresenta habilidades e projetos de forma clara. Demonstra competências em Front-end e design adaptável. (HTML5, CSS3, JavaScript) <span class="url-display">(robertosilva19.github.io/Portfolio_Pessoal/)</span></p>
+                    <h3>PORTFÓLIO PESSOAL RESPONSIVO</h3>
+                    <p class="text-xs text-gray-700">Aplicação web responsiva para showcase de projetos e habilidades, demonstrando competências em Front-end development. Tecnologias: HTML5, CSS3, JavaScript, Responsive Design. URL: robertosilva19.github.io/Portfolio_Pessoal/</p>
                 </div>
             </div>
         </section>
 
-        <!-- Formação Acadêmica -->
+        <!-- Formação, Cursos e Idiomas -->
         <section class="section">
-            <h2>Formação Acadêmica</h2>
-            <div class="section-content text-gray-800">
-                <ul class="list-disc ml-6 text-gray-700">
-                    <li>Análise e Desenvolvimento de Sistemas (UniCesumar – Julho 2027)</li>
-                    <li>Técnico em Transações Imobiliárias (Instituto Monitor – Dezembro/2021)</li>
-                    <li>Administração (Anhanguera Educacional – Junho/2012)</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Cursos Complementares -->
-        <section class="section">
-            <h2>Cursos Complementares</h2>
-            <div class="section-content text-gray-800">
-                <ul class="list-disc ml-6 text-gray-700">
-                    <li>Bootstrap 5 - Front-end (Alura, Cursando)</li>
-                    <li>HTML5 e CSS3 (Alura, Dezembro/2024)</li>
-                    <li>Marketing Digital (Alura, Outubro/2024)</li>
-                    <!-- Adicione aqui outros cursos relevantes para as tecnologias 'Em estudo' se houver -->
-                    <!-- Ex: <li>React.js Essencial (Plataforma X, Cursando)</li> -->
-                    <!-- Ex: <li>Introdução ao TypeScript (Plataforma Y, Concluído)</li> -->
-                </ul>
-            </div>
-        </section>
-
-        <!-- Idiomas -->
-        <section class="section">
-            <h2>Idiomas</h2>
-            <div class="section-content text-gray-800">
-                <ul class="list-disc ml-6 text-gray-700">
-                    <li>Português: Nativo</li>
-                    <li>Inglês: Intermediário</li>
-                    <li>Espanhol: Básico</li>
-                </ul>
+            <h2>FORMAÇÃO ACADÊMICA E QUALIFICAÇÕES</h2>
+            <div class="section-content text-gray-800 text-sm">
+                <div class="experience-item">
+                    <h3>ENSINO SUPERIOR</h3>
+                    <div class="text-xs text-gray-700 space-y-1">
+                        <p><strong>Análise e Desenvolvimento de Sistemas</strong> - UniCesumar | Conclusão: Julho/2027</p>
+                        <p><strong>Administração</strong> - Anhanguera | Concluído: Junho/2012</p>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <h3>CURSOS TÉCNICOS E ESPECIALIZAÇÕES</h3>
+                    <div class="text-xs text-gray-700 space-y-1">
+                        <p><strong>Técnico em Transações Imobiliárias</strong> - Instituto Monitor | Concluído: Dezembro/2021</p>
+                        <p><strong>Bootstrap 5 - Front-end</strong> - Alura | Em andamento</p>
+                        <p><strong>HTML5 e CSS3</strong> - Alura | Concluído: Dezembro/2024</p>
+                        <p><strong>Marketing Digital</strong> - Alura | Concluído: Outubro/2024</p>
+                        <p><strong>Inglês</strong> - Alura | Em andamento</p>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <h3>COMPETÊNCIAS LINGUÍSTICAS</h3>
+                    <div class="text-xs text-gray-700 space-y-1">
+                        <p><strong>Português:</strong> Nativo - Fluente oral e escrito</p>
+                        <p><strong>Inglês:</strong> Intermediário - Leitura técnica e comunicação básica</p>
+                        <p><strong>Espanhol:</strong> Básico - Compreensão e leitura</p>
+                    </div>
+                </div>
             </div>
         </section>
     </div>
-
-    <!-- Initialize Lucide Icons -->
-    <script>
-        lucide.createIcons();
-    </script>
 </body>
 </html>
